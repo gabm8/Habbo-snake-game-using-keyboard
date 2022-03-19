@@ -1,10 +1,13 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#SingleInstance Force
+#MaxThreadsPerHotkey 3
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-#SingleInstance Force
+setmousedelay -1
+setbatchlines -1
 
 
-msgbox, Como usar? `n1º) Posicione a tela do jogo e depois pressione`n `n F9 para identificar posição das setas (deve utilizar somente quando não tiver ninguem sobre as setas) `n`n Depois de configurado usar teclas de seta do teclado! `n`n`n`n F3 -> Encerrar programa `n`n`n`n Criado por https://github.com/gabm8/ `n Versão: 1.0.2
+msgbox, Como usar? `n1º) Posicione a tela do jogo e depois pressione`n `n F9 para identificar posição das setas (deve utilizar somente quando não tiver ninguem sobre as setas) `n`n Depois de configurado usar teclas de seta do teclado! `n`n`n`n F3 -> Encerrar programa `n`n`n`n Criado por https://github.com/gabm8/ `n Versão: 1.0.3
 return
 
 
