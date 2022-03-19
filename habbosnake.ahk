@@ -4,11 +4,11 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance Force
 
 
-msgbox, Como usar? `n1º) Posicione a tela do jogo e depois pressione`n `n F9 para identificar posição das setas (deve utilizar somente quando não tiver ninguem sobre as setas) `n`n Depois de configurado usar teclas de seta do teclado! `n`n`n`n F3 -> Encerrar programa `n`n`n`n Criado por https://github.com/gabm8/
+msgbox, Como usar? `n1º) Posicione a tela do jogo e depois pressione`n `n F9 para identificar posição das setas (deve utilizar somente quando não tiver ninguem sobre as setas) `n`n Depois de configurado usar teclas de seta do teclado! `n`n`n`n F3 -> Encerrar programa `n`n`n`n Criado por https://github.com/gabm8/ `n Versão: 1.0.2
 return
 
 
-
+;Comando de clicar ao teclar setas
 Up::
 	Click, %FoundX3%, %FoundY3% Left, 1
 return
@@ -26,9 +26,8 @@ Right::
 return
 
 
-
-F9::
 ;Calibrar posicao setas
+F9::
 
 CoordMode, Pixel, Window
 
@@ -66,7 +65,7 @@ msgbox,,, Posição das setas automaticamente configurado para: `n %FoundX1%, %F
 return
 
 
-
+;Finalizar app
 F3::
 exitapp
 
