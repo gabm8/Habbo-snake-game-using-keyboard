@@ -1,69 +1,114 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #SingleInstance Force
-#MaxThreadsPerHotkey 3
+#MaxThreadsPerHotkey 10
+#Persistent
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 setmousedelay -1
 setbatchlines -1
 
+	; Testar arquivos
+	IfNotExist, %A_ScriptDir%\seta_(1).png
+	{
+		MsgBox, Erro: Aquivos seta(1).png não encontrado na pasta!
+		exitapp
+	}
+	IfNotExist, %A_ScriptDir%\seta_(2).png
+	{
+		MsgBox, Erro: Aquivos seta(2).png não encontrado na pasta!
+		exitapp
+	}
+	IfNotExist, %A_ScriptDir%\seta_(3).png
+	{
+		MsgBox, Erro: Aquivos seta(3).png não encontrado na pasta!
+		exitapp
+	}
+	IfNotExist, %A_ScriptDir%\seta_(4).png
+	{
+		MsgBox, Erro: Aquivos seta(4).png não encontrado na pasta!
+		exitapp
+	}
 
-msgbox, Como usar? `n1º) Posicione a tela do jogo e depois pressione`n `n F9 para identificar posição das setas (deve utilizar somente quando não tiver ninguem sobre as setas) `n`n Depois de configurado usar teclas de seta do teclado! `n`n`n`n F3 -> Encerrar programa `n`n`n`n Criado por https://github.com/gabm8/ `n Versão: 1.0.3
+	erro=-1
+
+	msgbox, Como usar? `n1º) Posicione a tela do jogo e depois pressione`n `n F9 para identificar posição das setas (deve utilizar somente quando não tiver ninguem sobre as setas) `n`n Depois de configurado usar teclas de seta do teclado! `n`n`n`n F3 -> Encerrar programa `n`n`n`n Criado por https://github.com/gabm8/ `n Versão: 1.0.4
 return
 
 
 ;Comando de clicar ao teclar setas
 Up::
-	Click, %FoundX3%, %FoundY3% Left, 1
+	if erro=0
+		Click, %FoundX3%, %FoundY3% Left, 1
+	Else
+		msgbox,,, Primeiro calibre apertando F9!,3
 return
 
 Down::
-	Click, %FoundX4%, %FoundY4% Left, 1
+	if erro=0
+		Click, %FoundX4%, %FoundY4% Left, 1
+	Else
+		msgbox,,, Primeiro calibre apertando F9!,3
 return
 
 Left::
-	Click, %FoundX1%, %FoundY1% Left, 1
+	if erro=0
+		Click, %FoundX1%, %FoundY1% Left, 1
+	Else
+		msgbox,,, Primeiro calibre apertando F9!,3
 return
 
 Right::
-	Click, %FoundX2%, %FoundY2% Left, 1
+	if erro=0
+		Click, %FoundX2%, %FoundY2% Left, 1
+	Else
+		msgbox,,, Primeiro calibre apertando F9!,3
 return
 
 
 ;Calibrar posicao setas
 F9::
 
-CoordMode, Pixel, Window
+	CoordMode, Pixel, Window
+	Loop, 2
+	{
+		ImageSearch, FoundX1, FoundY1, 0, 0, 1920, 1080, %A_ScriptDir%\seta_(1).png
+		CenterImgSrchCoords("%A_ScriptDir%\seta_(1).png", FoundX1, FoundY1)
+	}
+	Until ErrorLevel = 0
+
+	Loop, 2
+	{
+		ImageSearch, FoundX2, FoundY2, 0, 0, 1920, 1080, %A_ScriptDir%\seta_(2).png
+		CenterImgSrchCoords("%A_ScriptDir%\seta_(2).png", FoundX2, FoundY2)
+	}
+	Until ErrorLevel = 0
+
+	Loop, 2
+	{
+		ImageSearch, FoundX3, FoundY3, 0, 0, 1920, 1080, %A_ScriptDir%\seta_(3).png
+		CenterImgSrchCoords("%A_ScriptDir%\seta_(3).png", FoundX3, FoundY3)
+	}
+	Until ErrorLevel = 0
+
+	Loop, 2
+	{
+		ImageSearch, FoundX4, FoundY4, 0, 0, 1920, 1080, %A_ScriptDir%\seta_(4).png
+		CenterImgSrchCoords("%A_ScriptDir%\seta_(4).png", FoundX4, FoundY4)
+	}
+	Until ErrorLevel = 0
 
 
-Loop, 10
-{
-	ImageSearch, FoundX1, FoundY1, 0, 0, 1920, 1080, %A_ScriptDir%\seta_(1).png
-	CenterImgSrchCoords("%A_ScriptDir%\seta_(1).png", FoundX1, FoundY1)
-}
-Until ErrorLevel = 0
+	if (FoundX1=0 or FoundY1=0 or FoundX2=0 or FoundY2=0 or FoundX3=0 or FoundY3=0 or FoundX4=0 or FoundY4=0)
+	{
+		erro=1
+		msgbox, Erro: não foi possivel localizar seta vazia na tela! Apertar F9 apenas quando não tiver ninguem jogando!`n`n`n Posições encontradas ou não: `n %FoundX1%, %FoundY1% `n %FoundX2%, %FoundY2% `n %FoundX3%, %FoundY3% `n %FoundX4%, %FoundY4%
+	}
+	else
+	{
+		erro=0
+		msgbox,,, Posição das setas automaticamente configurado para: `n %FoundX1%, %FoundY1% `n %FoundX2%, %FoundY2% `n %FoundX3%, %FoundY3% `n %FoundX4%, %FoundY4%
+	}
 
-Loop, 10
-{
-	ImageSearch, FoundX2, FoundY2, 0, 0, 1920, 1080, %A_ScriptDir%\seta_(2).png
-	CenterImgSrchCoords("%A_ScriptDir%\seta_(2).png", FoundX2, FoundY2)
-}
-Until ErrorLevel = 0
-
-Loop, 10
-{
-	ImageSearch, FoundX3, FoundY3, 0, 0, 1920, 1080, %A_ScriptDir%\seta_(3).png
-	CenterImgSrchCoords("%A_ScriptDir%\seta_(3).png", FoundX3, FoundY3)
-}
-Until ErrorLevel = 0
-
-Loop, 10
-{
-	ImageSearch, FoundX4, FoundY4, 0, 0, 1920, 1080, %A_ScriptDir%\seta_(4).png
-	CenterImgSrchCoords("%A_ScriptDir%\seta_(4).png", FoundX4, FoundY4)
-}
-Until ErrorLevel = 0
-
-msgbox,,, Posição das setas automaticamente configurado para: `n %FoundX1%, %FoundY1% `n %FoundX2%, %FoundY2% `n %FoundX3%, %FoundY3% `n %FoundX4%, %FoundY4%
 
 return
 
