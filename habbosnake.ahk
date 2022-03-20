@@ -31,7 +31,7 @@ setbatchlines -1
 
 	erro=-1
 
-	msgbox, Como usar? `n1º) Posicione a tela do jogo e depois pressione`n `n F9 para identificar posição das setas (deve utilizar somente quando não tiver ninguem sobre as setas) `n`n Depois de configurado usar teclas de seta do teclado! `n`n`n`n F3 -> Encerrar programa `n`n`n`n Criado por https://github.com/gabm8/ `n Versão: 1.0.4
+	goto, GuiOpen
 return
 
 
@@ -130,3 +130,14 @@ CenterImgSrchCoords(File, ByRef CoordX, ByRef CoordY)
 	CoordY += LoadedPicH // 2
 	ErrorLevel := LastEL
 }
+
+
+GuiOpen:
+	Gui, Add, Text, x32 y49 w410 h270 , Como usar? `n1º) Posicione a tela do jogo e depois pressione`n `n F9 para identificar posição das setas (deve utilizar somente quando não tiver ninguem sobre as setas) `n`n Depois de configurado`, usar teclas de seta do teclado! `n`n`n          >>> EM FUNCIONAMENTO <<<`n`nPara encerrar programa aperte F3 ou feche esta janela`n`n`n`n Criado por https://github.com/gabm8/ `n Versão: 1.0.5
+	; Generated using SmartGUI Creator 4.0
+	Gui, Show, x186 y127 h379 w479, Macro para Snake Habbo
+Return
+
+GuiClose:
+	ExitApp
+return

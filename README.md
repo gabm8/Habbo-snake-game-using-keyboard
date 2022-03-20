@@ -1,4 +1,4 @@
-# Habbo-snake-game-using-keyboard
+# Habbo-snake-game-using-keyboard `1.0.5`
 Macro criado para clicar nas setas do jogo Snake Game do Habbo Hotel ao teclar nas setas do teclado.
 
 ## [Download](https://github.com/gabm8/Habbo-snake-game-using-keyboard/archive/refs/heads/main.zip)
