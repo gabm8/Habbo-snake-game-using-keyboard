@@ -103,6 +103,7 @@ F9::
 	{
 		ImageSearch, FoundX4, FoundY4, 0, 0, Screen_X, Screen_Y, %A_ScriptDir%\seta_(4).png
 		CenterImgSrchCoords("%A_ScriptDir%\seta_(4).png", FoundX4, FoundY4)
+		FoundX4:= FoundX4+28
 	}
 	Until ErrorLevel = 0
 
@@ -142,7 +143,7 @@ CenterImgSrchCoords(File, ByRef CoordX, ByRef CoordY)
 
 
 GuiOpen:
-	Gui, Add, Text, x32 y49 w410 h270 , Como usar? `n1º) Posicione a tela do jogo e depois pressione`n `n F9 para identificar posição das setas (deve utilizar somente quando não tiver ninguem sobre as setas) `n`n Depois de configurado`, usar teclas de seta do teclado! `n`n------------------------------`n          >>> EM FUNCIONAMENTO <<<`n`nPara encerrar programa aperte F3 ou feche esta janela`n------------------------------`n`n`n Criado por https://github.com/gabm8/ `n Versão: 1.0.6`n`nResolução do monitor: %Screen_X%x%Screen_Y%
+	Gui, Add, Text, x32 y49 w410 h270 , Como usar? `n1º) Posicione a tela do jogo e depois pressione`n `n F9 para identificar posição das setas (deve utilizar somente quando não tiver ninguem sobre as setas) `n`n Depois de configurado`, usar teclas de seta do teclado! `n`n------------------------------`n          >>> EM FUNCIONAMENTO <<<`n`nPara encerrar programa aperte F3 ou feche esta janela`n------------------------------`n`n`n Criado por https://github.com/gabm8/ `n Versão: 1.0.7`n`nResolução do monitor: %Screen_X%x%Screen_Y%
 	; Generated using SmartGUI Creator 4.0
 	Gui, Show, x186 y127 h379 w479, Macro para Snake Habbo
 Return
